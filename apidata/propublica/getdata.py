@@ -2,8 +2,8 @@ import requests
 from flask import jsonify
 from config import key
 
-def getdata(query):
-    url = f"https://api.propublica.org/congress/v1/bills/search.json?query={query}"
+def getdata(bill_slug, congress_num):
+    url = f"https://api.propublica.org/congress/v1/{congress_num}/bills/{bill_slug}.json"
     response = requests.get(url, headers={'X-API-Key':key})
     return jsonify(response.text)
 
