@@ -2,6 +2,13 @@ from flask import Flask, render_template, jsonify
 import pymongo
 import os
 
+# allowing app.py to reference files in the billstotrack folder
+import sys
+# caution: path[0] is reserved for script path (or '' in REPL)
+sys.path.insert(1, '../apidata/billstotrack')
+from mongorefresh import topbills_refresh
+topbills_refresh()
+
 # Create an instance of our Flask app.
 app = Flask(__name__)
 mongo_username = os.getenv('mongo_username')
@@ -15,14 +22,14 @@ uri = f"mongodb+srv://{mongo_username}:{mongo_password}@cluster0.khzagou.mongodb
 
 with pymongo.MongoClient(uri) as client:
     db = client.usbillsapp
-    billmetadata = db.billmetadata
+    topbills_coll = db.topbills
 
 # Set route
 @app.route('/')
 def index():
-    billdata = billmetadata.find()
+    topbills = topbills_coll.find()
     return_list = []
-    for result in billdata:
+    for result in topbills:
         return_list.append(result)
     return render_template("index.html", return_list=return_list)
 

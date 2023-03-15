@@ -14,8 +14,15 @@
   </head>
 
   <body>
-    <div id="row1" class="col-lg-12">Text Here</div>
-    
+    <div id="row1" class="col-lg-12">
+      {% for element in return_list %}
+        <div>
+          {{element}}
+        </div>
+      {% endfor %}
+    </div>
+    {% for element in return_list %}
+    {% endfor %}
     <div id="row2" class="row">
         <div class="col-lg-6">
           <div class="list-group" id="billmetadata">More text here.</div>
