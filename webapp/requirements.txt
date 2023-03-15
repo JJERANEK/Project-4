@@ -1,3 +1,4 @@
+bs4
 certifi
 Click
 Flask
@@ -11,6 +12,7 @@ pandas
 pymongo
 python-dateutil
 pytz
+requests
 six
 SQLAlchemy
 Werkzeug
