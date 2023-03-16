@@ -7,6 +7,13 @@ def topbills_refresh():
     conn = f"mongodb+srv://{mongo_username}:{mongo_password}@cluster0.khzagou.mongodb.net/?retryWrites=true&w=majority"
     client = pymongo.MongoClient(conn)
     usbillsapp_db = client.usbillsapp
+    try: 
+        # clear out collection if it already exists
+        usbillsapp_db.drop_collection("topbills")
+    except:
+        pass
+
+    # create the collection again for new refreshed data
     topbills_coll = usbillsapp_db.topbills
 
     # generate updated data
