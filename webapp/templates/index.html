@@ -1,35 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
-  
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>US Congress Bills App</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <!-- D3 -->
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <!-- Our CSS -->
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-  </head>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>US Bills</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="static/css/style.css">
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+	<body>
+        
+        <!-- Jumbotron and Navbar -->
+        <div class="col-md-12 jumbotron text-center">
+            <h1>Will This Bill Pass?</h1>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Project Overview</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link #2</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link #3</a>
+                </li>
+            </ul>
+        </div>
+        <!-- End of Jumbotron and Navbar -->
 
-  <body>
-    <div id="row1" class="col-lg-12">
-      {% for element in return_list %}
-        <div>
-          {{element}}
+        <!-- Container Start -->
+        <div class="container text-center">
+            
+            <!-- Row 1 Start -->
+            <div class="row">
+              <div class="col">
+                <p id="overview_text">Insert Project Overview Text Here</p>
+              </div>
+              <!-- Start of Carousel -->
+              <!-- <div class="col">
+                <div id="carouselExampleCaptions" class="carousel slide">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="static/img/elephant.png" class="d-block w-100" alt="elephant">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>First slide label</h5>
+                          <p>Some representative placeholder content for the first slide.</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img src="static/img/bunny.png" class="d-block w-100" alt="bunny">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>Second slide label</h5>
+                          <p>Some representative placeholder content for the second slide.</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img src="static/img/llama.png" class="d-block w-100" alt="llama">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>Third slide label</h5>
+                          <p>Some representative placeholder content for the third slide.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+              </div> -->
+              <!-- End of Carousel -->
+            </div>
+            <!-- End of Row 1 -->
+
+            <!-- Row 2 Start -->
+            <div class="row">
+              <!-- Start of Selection   -->
+              
+                <!-- <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                      </div>
+                      <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                      </div>
+                      <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                      </div>
+                      <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    </a>
+                </div> -->
+              <div class="col">
+                <div class="billData">
+                  <h5>Select a Bill:</h5>
+                  <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                </div>
+              </div>
+              <!-- End of Selection -->
+              <div class="col">
+                <div id="sample-metadata" class="panel-body"></div>
+              </div>
+              <div class="col">
+                3 of 3
+              </div>
+            </div>
+            <!-- End of Row 2 -->
+
         </div>
-      {% endfor %}
-    </div>
-    {% for element in return_list %}
-    {% endfor %}
-    <div id="row2" class="row">
-        <div class="col-lg-6">
-          <div class="list-group" id="billmetadata">More text here.</div>
-        </div>
-        <div class="col-lg-6">
-          <div class="list-group" id="placeholder">More text here.</div>
-        </div>
-    </div>
-  </body>
+        <!-- End of Container -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="static/js/logic.js"></script>
+
+	</body>
 </html>
