@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify
+from flask_cors import CORS, cross_origin
 import pymongo
 import os
 
@@ -11,6 +12,7 @@ topbills_refresh()
 
 # Create an instance of our Flask app.
 app = Flask(__name__)
+cors = CORS(app)
 mongo_username = os.getenv('mongo_username')
 mongo_password = os.getenv('mongo_password')
 ### when running on your personal machine, not render, use:

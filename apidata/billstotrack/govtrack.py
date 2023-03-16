@@ -13,7 +13,7 @@ def mid(s, offset, amount):
 def get_current_bills():
     base_url = "https://www.govtrack.us"
     search_url = f"{base_url}/congress/bills/#docket"
-    response = requests.get(search_url)
+    response = requests.get(search_url, verify=False)
     soup = BeautifulSoup(response.content, "html.parser")
     topbills = soup.find("div",{'id':'top_tracked_bills'}).find_all("a")
     url_list = [result['href'] for result in topbills]
