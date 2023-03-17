@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify
 from flask_cors import CORS, cross_origin
 import pymongo
 import os
+import json
 
 # allowing app.py to reference files in the billstotrack folder
 import sys
@@ -40,8 +41,10 @@ def topbilldata():
     topbills = topbills_coll.find()
     return_list = []
     for result in topbills:
+        del result['_id']
         return_list.append(result)
-    return return_list
+    return jsonify(return_list)
+
 
 if __name__ == "__main__":
     # change True to False when ready for deployment
