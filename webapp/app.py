@@ -43,8 +43,7 @@ def topbilldata():
     for result in topbills:
         del result['_id']
         return_list.append(result)
-    return jsonify(return_list)
-
+    return return_list
 
 if __name__ == "__main__":
     # change True to False when ready for deployment
