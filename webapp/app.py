@@ -29,11 +29,19 @@ with pymongo.MongoClient(uri) as client:
 # Set route
 @app.route('/')
 def index():
+    return render_template("index.html")
+
+@app.route('/usmap')
+def usmap():
+    return render_template("usmap.html")
+
+@app.route('/api/v1/topbilldata')
+def topbilldata():
     topbills = topbills_coll.find()
     return_list = []
     for result in topbills:
         return_list.append(result)
-    return render_template("index.html", return_list=return_list)
+    return return_list
 
 if __name__ == "__main__":
     # change True to False when ready for deployment

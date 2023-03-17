@@ -25,6 +25,9 @@ def getdata():
         cosponsors_total = data['cosponsors']
         month_introduced = dt.strptime(data['introduced_date'], "%Y-%m-%d").month
         committees = data['committee_codes']
+        bill_id = data['bill_slug']
+        title = data['title']
+        short_title = data['short_title']
         try:
             cosponsors_dem = data['cosponsors_by_party']['D']
         except:
@@ -39,6 +42,11 @@ def getdata():
             cosponsors_ind = 0
 
         temp_dict = {
+            "meta_data":{
+                "bill_id":bill_id,
+                "title":short_title,
+                "summary":title
+            },
             "bill_type":bill_type,
             "congress_num":congress_num,
             "sponsor_party":sponsor_party,
