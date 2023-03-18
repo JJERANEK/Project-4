@@ -15,6 +15,7 @@ python-dateutil
 pytz
 requests
 six
+splinter
 SQLAlchemy
 Werkzeug
 wincertstore

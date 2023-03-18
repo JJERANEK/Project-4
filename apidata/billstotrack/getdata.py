@@ -4,6 +4,12 @@ from govtrack import get_current_bills
 import json
 from pprint import pprint
 from datetime import datetime as dt
+from bs4 import BeautifulSoup
+from splinter import Browser
+import selenium
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
+import time
 
 def propublica_data_call(congress_num, bill_slug):
     url = f"https://api.propublica.org/congress/v1/{congress_num}/bills/{bill_slug}.json"
@@ -12,7 +18,6 @@ def propublica_data_call(congress_num, bill_slug):
     return json_data
 
 def getdata():
-
     current_bills = get_current_bills()
     propublica_data = []
     for bill in current_bills:
@@ -62,9 +67,28 @@ def getdata():
         propublica_data.append(temp_dict)
     return propublica_data
 
+def getallintroducedbills():
+    # Set up Splinter
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
+    browser.visit(url)
+    url = "https://www.govtrack.us/congress/bills/browse?sort=-current_status_date&status=1,3#current_status[]=1,3&bill_type[]=3,2,7,8&sort=-introduced_date"
+
+    body = browser.find_element_by_css_selector('body')
+    for x in range(60):
+        time.sleep(1)
+        body.send_keys(Keys.PAGE_DOWN)
+    
+    site_contents = browser.html
+    soup = BeautifulSoup(site_contents, "html.parser")
+
+    return soup
+
 if __name__ == '__main__':
-    propublica_data = getdata()
-    pprint(propublica_data[0])
+    # propublica_data = getdata()
+    # pprint(propublica_data[0])
+
+    print(getallintroducedbills())
 
     """
     useful keys for ML algorithm:
