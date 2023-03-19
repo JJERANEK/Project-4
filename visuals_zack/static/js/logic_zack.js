@@ -5,32 +5,43 @@ const git_repo_url = "https://raw.githubusercontent.com/JJERANEK/Project-4/main/
 var house_url = git_repo_url+"house_cleaned.csv"
 console.log(house_url)
 
+// Function to sum arrays:
+function sumArray(array) {
+  let sum = 0;
+  array.forEach(item => {
+    sum += item;
+  });
+  return sum;
+}
+
 d3.csv(house_url).then(function(data) {
   console.log("Data for the House:",data);
-  // Filter to 113 congress:
-  // function checkCongress_113(Congress) {
-  //   return Congress "113";
-  // }
+  // Data for trace for Congress_113:
   let congress_113 = data.filter(bill => bill["Congress"] === '113');
   console.log("congress_113",congress_113) 
   // Data trace array
   let billPassed_113 = congress_113.map(data => data.bill_passed);
   console.log("billPassed",billPassed_113)  
+  // Add up the bills passed:
+  var total_billPassed_113 = sumArray(billPassed_113);
+  console.log("total_billPassed_113",total_billPassed_113)
+  var total_Failed_113 = total_billPassed_113 - total_billPassed_113.length;
+  console.log("total_Failed_113",total_Failed_113)
   // Trace for the congress for bill
   let billCongress = congress_113.map(data => data.Congress);
   console.log("billCongress",billCongress)  
-  let labels = ["Failed","Passed"];
-  // Apply the group barmode to the layout
-    let trace113 = {
-      x: billPassed_113, 
-      y: billCongress,
-      text: labels,
-      hovertext: labels,
+
+  // Set the trace for congress_113:
+    let trace_113 = {
+      x: billCongress, 
+      y: total_billPassed_113,
+      // text: labels,
+      // hovertext: labels,
       name: "113th Congress",
       type: "bar"
     };
     // Create data array
-    let dataPlot = [trace113];
+    let dataPlot = [trace_113];
 
     // Apply a title to the layout
     let layout = {
@@ -38,6 +49,8 @@ d3.csv(house_url).then(function(data) {
     // barmode: "group",
     showlegend: false,
     xaxis: {
+      type: "category",
+      tickvals: ['Failed', 'Passed'],
       tickson: "boundaries",
       ticklen: 15,
       showdividers: true,
