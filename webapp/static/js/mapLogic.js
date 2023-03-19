@@ -1,13 +1,31 @@
 const base_url = window.location.href;
-const billdataurl = `${base_url}api/v1/topbilldata`;
+let a = (base_url.length - 'usmap'.length);
+let updated_base_url = truncateString(base_url,a);
 
-
+console.log(a);
+console.log(base_url,base_url.length);
+console.log('usmap'.length);
+console.log(updated_base_url.length)
+const billdataurl = `${updated_base_url}api/v1/topbilldata`;
+console.log(billdataurl);
 let coordinates = [39.50, -98.35];
+
+
+let plot_object;
+let myMapLayer;
 
 let myMap = L.map("map", {
     center: coordinates,
     zoom: 5
 });
+
+function truncateString(str, num) {
+    if (str.length > num) {
+      return str.slice(0, num);
+    } else {
+      return str;
+    }
+  };
 
 // Adding the tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -17,7 +35,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 function optionChanged(selection) {
     
 };
-
 
 let Alabama	                    = [32.806671, -86.791130];
 let Alaska	                    = [61.370716, -152.404419];
@@ -133,9 +150,9 @@ function loadpage() {
     d3.json(billdataurl).then(bills => {
         let topbills = [];
         bills.forEach( (bill) => {
-            topbills.append(bill);
+            topbills.push(bill);
         });
     });
 };
 
-loadpage(parkname);
+loadpage();
