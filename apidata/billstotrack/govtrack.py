@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
 
 def left(s, amount):
     return s[:amount]
@@ -10,7 +11,7 @@ def right(s, amount):
 def mid(s, offset, amount):
     return s[offset:offset+amount]
 
-def get_current_bills():
+def gettopbills():
     base_url = "https://www.govtrack.us"
     search_url = f"{base_url}/congress/bills/#docket"
     response = requests.get(search_url)
@@ -40,5 +41,21 @@ def get_current_bills():
     
     return query_list
 
+def getcurrentbills():
+    df = pd.read_csv('../../Resources/search_results_2023-03-18_1238pm.csv', index_col=False)
+    df.rename(columns={'Congress':'congress_num'}, inplace=True)
+    s1 = df['bill_id'].str.replace('. ', '').str.replace('.','').str.lower()
+    s2 = df['congress_num'].str[:3]
+    output_df = pd.concat([s1, s2], axis=1)
+    output_dict = output_df.to_dict()
+    output = []
+    for index,value in output_df.iterrows():
+        temp_dict = {
+            "bill_id":value['bill_id'],
+            "congress_num":value['congress_num']
+        }
+        output.append(temp_dict)
+    return output
+
 if __name__ == "__main__":
-    print(get_current_bills())
+    print(getcurrentbills())

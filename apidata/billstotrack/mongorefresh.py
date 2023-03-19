@@ -1,6 +1,6 @@
 import pymongo
 from config import mongo_password, mongo_username
-from getdata import getdata
+from getdata import gettopbilldata
 
 def topbills_refresh():
     # establishing pymongo connection
@@ -17,7 +17,7 @@ def topbills_refresh():
     topbills_coll = usbillsapp_db.topbills
 
     # generate updated data
-    bills = getdata()
+    bills = gettopbilldata()
 
     # load data into mongo usbillsapp db, topbills collection
     for bill in bills:
@@ -32,8 +32,14 @@ if __name__ == '__main__':
     usbillsapp_db = client.usbillsapp
     topbills_coll = usbillsapp_db.topbills
 
+    try: 
+        # clear out collection if it already exists
+        usbillsapp_db.drop_collection("topbills")
+    except:
+        pass
+
     # generate updated data
-    bills = getdata()
+    bills = gettopbilldata()
 
     # load data into mongo usbillsapp db, topbills collection
     for bill in bills:
