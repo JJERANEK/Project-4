@@ -116,3 +116,8 @@ h3 {
 #donut {
     font-weight: bold;
 }
+
+#map {
+    height: 850px;
+    width: 100%;
+}

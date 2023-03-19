@@ -26,6 +26,7 @@ uri = f"mongodb+srv://{mongo_username}:{mongo_password}@cluster0.khzagou.mongodb
 with pymongo.MongoClient(uri) as client:
     db = client.usbillsapp
     topbills_coll = db.topbills
+    currentbills_coll = db.currentbills
 
 # Set route
 @app.route('/')
@@ -41,6 +42,15 @@ def topbilldata():
     topbills = topbills_coll.find()
     return_list = []
     for result in topbills:
+        del result['_id']
+        return_list.append(result)
+    return return_list
+
+@app.route('/api/v1/currentbilldata')
+def currentbilldata():
+    currentbills = currentbills_coll.find()
+    return_list = []
+    for result in currentbills:
         del result['_id']
         return_list.append(result)
     return return_list
