@@ -7,32 +7,48 @@ console.log(house_url)
 
 d3.csv(house_url).then(function(data) {
   console.log("Data for the House:",data);
+  // Filter to 113 congress:
+  // function checkCongress_113(Congress) {
+  //   return Congress "113";
+  // }
+  let congress_113 = data.filter(bill => bill["Congress"] === '113');
+  console.log("congress_113",congress_113) 
   // Data trace array
-  let billPassed = data.map(data => data.bill_passed);
-  console.log("billPassed",billPassed)  
+  let billPassed_113 = congress_113.map(data => data.bill_passed);
+  console.log("billPassed",billPassed_113)  
   // Trace for the congress for bill
-  let billCongress = data.map(data => data.Congress);
+  let billCongress = congress_113.map(data => data.Congress);
   console.log("billCongress",billCongress)  
+  let labels = ["Failed","Passed"];
   // Apply the group barmode to the layout
-    let trace1 = {
-      x: billCongress,
-      y: billPassed,
-      text: billCongress,
-      name: "bills_passed_congress",
+    let trace113 = {
+      x: billPassed_113, 
+      y: billCongress,
+      text: labels,
+      hovertext: labels,
+      name: "113th Congress",
       type: "bar"
     };
     // Create data array
-    let dataPlot = [trace1];
+    let dataPlot = [trace113];
 
     // Apply a title to the layout
     let layout = {
-    title: "Bills Passed by Congressional Term",
-    barmode: "group",
+    title: "Bills Passed by Congressional Term:<br>House of Representatives",
+    // barmode: "group",
+    showlegend: false,
+    xaxis: {
+      tickson: "boundaries",
+      ticklen: 15,
+      showdividers: true,
+      dividercolor: 'grey',
+      dividerwidth: 2
+    },
     // Include margins in the layout so the x-tick labels display correctly
     margin: {
       l: 50,
       r: 50,
-      b: 200,
+      b: 20,
       t: 50,
       pad: 4
     }
