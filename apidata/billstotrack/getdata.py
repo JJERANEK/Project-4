@@ -9,7 +9,6 @@ import pymongo
 def propublica_data_call(congress_num, bill_slug):
     url = f"https://api.propublica.org/congress/v1/{congress_num}/bills/{bill_slug}.json"
     response = requests.get(url, headers={'X-API-Key':key})
-    print(response)
     json_data = json.loads(response.text)
     return json_data
 

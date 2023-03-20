@@ -125,3 +125,8 @@ h3 {
     padding-top: 40px;
     font-weight: bold;
 }
+
+#map {
+    height: 850px;
+    width: 100%;
+}
