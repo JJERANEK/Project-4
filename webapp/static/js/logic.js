@@ -133,10 +133,11 @@ function initDashboard() {
         console.log(data);
         let billIDs = [];
         for (let i = 0; i < data.length; i++) {
-            let metadata = data[i]["meta_data"]
-            let billID = metadata["bill_id"].toUpperCase()
-            billIDs.push(billID)
-            dropdown.append("option").text(`${billID}`).property("value", billID)
+            let metadata = data[i]["meta_data"];
+            let billID = metadata["bill_id"].toUpperCase();
+            let title = metadata["title"];
+            billIDs.push(billID);
+            dropdown.append("option").text(`${billID}: ${title}`).property("value", billID);
         }
         buildCharts(billIDs[0]);
         populateInfo(billIDs[0]);
@@ -146,4 +147,3 @@ function initDashboard() {
 
 initDashboard();
 
-// Dropdowns for Make a Bill

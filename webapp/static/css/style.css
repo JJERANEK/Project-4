@@ -65,9 +65,13 @@ h3 {
     text-align: center;
 }
 
+#selDataset {
+    width: 350px;
+}
+
 .sponsorData {
     text-align: center;
-    padding-left: 60px;
+    padding-left: 30px;
     padding-right: 20px;
 }
 
@@ -99,6 +103,10 @@ h3 {
     font-family: 'Courier New', Courier, monospace;
 }
 
+.col-4 {
+    padding-left: 90px;
+}
+
 #output {
     height: 200px;
     width: 300px;
@@ -114,5 +122,6 @@ h3 {
 }
 
 #donut {
+    padding-top: 40px;
     font-weight: bold;
 }
