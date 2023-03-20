@@ -69,14 +69,20 @@ h3 {
     width: 350px;
 }
 
+.card, .w-50 {
+    margin-left: 150px;
+    margin-bottom: 20px;
+    background: transparent;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+}
+
 .sponsorData {
     text-align: center;
-    padding-left: 30px;
-    padding-right: 20px;
+    padding-top: 300px;
 }
 
 .sponsorData, p {
-    padding-top: 20px;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
@@ -84,13 +90,15 @@ h3 {
 
 
 #billInfo {
-    border: 6px solid;
     overflow: auto;
     text-align: center;
-
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 25px;
+    background-image: url("http://www.templeofsacredsound.com/wp-content/uploads/2012/11/Background-Scroll-png.png");
+    background-position: center;
+    background-size: 1060px 800px;
+    background-repeat: no-repeat;
+    padding-left: 45px;
+    padding-right: 65px;
+    padding-top: 125px;
     padding-bottom: 8px;
 }
 
@@ -129,4 +137,28 @@ h3 {
 #map {
     height: 850px;
     width: 100%;
+}
+
+h2 {
+    text-align: center;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bolder;
+    padding-top: 20px;
+}
+
+.graphs {
+    height: 100%;
+    width: 100%;
+}
+
+#imageDescriptionOne, #imageDescriptionTwo {
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 40px;
+}
+
+.col-md-4 {
+    margin-left: -45px;
+    margin-bottom: 0px;
 }

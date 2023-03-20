@@ -1,10 +1,5 @@
 const url = "https://usbillsapp.onrender.com/api/v1/topbilldata"
-// const url = "../../Resources/House_113_118.csv"
-// const delay = ms => new Promise(res => setTimeout(res, ms));
 
-// d3.json(billsurl).then (data => {
-//     console.log(data);
-// });
 
 // Build Charts
 function buildCharts(billID) {
