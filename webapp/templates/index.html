@@ -16,10 +16,13 @@
             <h1>Will This Bill Pass?</h1>
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Project Overview</a>
+                  <a class="nav-link active" aria-current="page" href="index.html">Top 25 Bills</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">About the Model</a>
+                  <a class="nav-link" href="usmap.html">Map</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About the Model</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="https://github.com/JJERANEK/Project-4">GitHub Repository</a>
@@ -49,15 +52,36 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="sponsorData">
-                    <h3>Bill Sponsorship:</h3>
-                    <div id="sponsor-metadata" class="panel-body"></div>
+                  <div class="card w-50">
+                    <img src="../static/img/map.png" class="card-img-top" alt="Map">
+                    <div class="card-body">
+                      <h5 class="card-title">View Our Map!</h5>
+                      <p class="card-text">See where current bills are coming from!</p>
+                      <a href="usmap.html" class="btn btn-primary">Go to Map</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="card w-50">
+                    <img src="../static/img/mlhome.png" style="height: 130px" class="card-img-top" alt="Machine Learning">
+                    <div class="card-body">
+                      <h5 class="card-title">How Did We Get Here?</h5>
+                      <p class="card-text">See how the model works and what we discovered along the way!</p>
+                      <a href="about.html" class="btn btn-danger">Go to Model Breakdown</a>
+                    </div>
                   </div>
                 </div>
               </div>
               <!-- End of Selection -->
               <div class="col-5" id="billInfo">
                 <div id="sample-metadata" class="panel-body"></div>
+                <div class="row">
+                  <div class="sponsorData">
+                    <hr>
+                    <h4>Bill Sponsorship:</h4>
+                    <div id="sponsor-metadata" class="panel-body"></div>
+                  </div>
+                </div>
               </div>
               <div class="col-4">
                 <div class="row">

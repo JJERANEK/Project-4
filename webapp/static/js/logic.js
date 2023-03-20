@@ -1,10 +1,6 @@
 const url = "https://usbillsapp.onrender.com/api/v1/topbilldata"
-// const url = "../../Resources/House_113_118.csv"
-// const delay = ms => new Promise(res => setTimeout(res, ms));
+const currentBillurl = "https://usbillsapp.onrender.com/api/v1/currentbilldata"
 
-// d3.json(billsurl).then (data => {
-//     console.log(data);
-// });
 
 // Build Charts
 function buildCharts(billID) {
@@ -133,10 +129,11 @@ function initDashboard() {
         console.log(data);
         let billIDs = [];
         for (let i = 0; i < data.length; i++) {
-            let metadata = data[i]["meta_data"]
-            let billID = metadata["bill_id"].toUpperCase()
-            billIDs.push(billID)
-            dropdown.append("option").text(`${billID}`).property("value", billID)
+            let metadata = data[i]["meta_data"];
+            let billID = metadata["bill_id"].toUpperCase();
+            let title = metadata["title"];
+            billIDs.push(billID);
+            dropdown.append("option").text(`${billID}: ${title}`).property("value", billID);
         }
         buildCharts(billIDs[0]);
         populateInfo(billIDs[0]);
@@ -146,4 +143,3 @@ function initDashboard() {
 
 initDashboard();
 
-// Dropdowns for Make a Bill
