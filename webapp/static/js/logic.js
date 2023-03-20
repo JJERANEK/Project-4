@@ -1,4 +1,5 @@
 const url = "https://usbillsapp.onrender.com/api/v1/topbilldata"
+const currentBillurl = "https://usbillsapp.onrender.com/api/v1/currentbilldata"
 
 
 // Build Charts
