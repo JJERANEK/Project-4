@@ -69,11 +69,11 @@ function generateTable(state, currentbills) {
     let row = "";
     let rows = "";
     let table = "";
-    let tableHeader = `<thead><tr><th scope="col">Bill ID</th><th scope="col">Bill Type</th><th scope="col">Title</th><th scope="col">Summary</th><th scope="col">Prediction</th><th scope="col">Probability</th></tr></thead>`;
+    let tableHeader = `<thead><tr><th scope="col">Bill ID</th><th scope="col">Sponsor Party</th><th scope="col">Title</th><th scope="col">Summary</th><th scope="col">Prediction</th><th scope="col">Probability</th></tr></thead>`;
     let tableBody = `<tbody>`;
     currentbills.forEach( (bill) => {
         if (bill['sponsor_state'] == state) {
-            row = `<tr><td>${bill['meta_data']['bill_id']}</td><td>${bill['bill_type']}</td><td>${bill['meta_data']['title']}</td><td>${bill['meta_data']['summary']}</td><td>${bill['prediction']}</td><td>${bill['probability']}</td></tr>`;
+            row = `<tr><td>${bill['meta_data']['bill_id']}</td><td>${bill['sponsor_party']}</td><td>${bill['meta_data']['title']}</td><td>${bill['meta_data']['summary']}</td><td>${bill['prediction']}</td><td>${bill['probability']}</td></tr>`;
             rows = rows + row;
         }
     });
