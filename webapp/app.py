@@ -21,11 +21,11 @@ with pymongo.MongoClient(uri) as client:
     currentbills_coll = db.currentbills
 
 # Set route
-@app.route('/')
+@app.route('/index.html')
 def index():
     return render_template("index.html")
 
-@app.route('/usmap')
+@app.route('/usmap.html')
 def usmap():
     return render_template("usmap.html")
 
