@@ -2,14 +2,6 @@ from flask import Flask, render_template, jsonify
 from flask_cors import CORS, cross_origin
 import pymongo
 import os
-import json
-
-# allowing app.py to reference files in the billstotrack folder
-import sys
-# caution: path[0] is reserved for script path (or '' in REPL)
-sys.path.insert(1, '../apidata/billstotrack')
-from mongorefresh import topbills_refresh
-topbills_refresh()
 
 # Create an instance of our Flask app.
 app = Flask(__name__)

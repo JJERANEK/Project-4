@@ -5,8 +5,8 @@ from getdata import gettopbilldata
 def topbills_refresh():
     # establishing pymongo connection
     conn = f"mongodb+srv://{mongo_username}:{mongo_password}@cluster0.khzagou.mongodb.net/?retryWrites=true&w=majority"
-    client = pymongo.MongoClient(conn)
-    usbillsapp_db = client.usbillsapp
+    with pymongo.MongoClient(conn) as client:    
+        usbillsapp_db = client.usbillsapp
     try: 
         # clear out collection if it already exists
         usbillsapp_db.drop_collection("topbills")
@@ -28,9 +28,9 @@ def topbills_refresh():
 if __name__ == '__main__':
     # establishing pymongo connection
     conn = f"mongodb+srv://{mongo_username}:{mongo_password}@cluster0.khzagou.mongodb.net/?retryWrites=true&w=majority"
-    client = pymongo.MongoClient(conn)
-    usbillsapp_db = client.usbillsapp
-    topbills_coll = usbillsapp_db.topbills
+    with pymongo.MongoClient(conn) as client:
+        usbillsapp_db = client.usbillsapp
+        topbills_coll = usbillsapp_db.topbills
 
     try: 
         # clear out collection if it already exists
