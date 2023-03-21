@@ -73,11 +73,12 @@ function generateTable(state, currentbills) {
     let tableBody = `<tbody>`;
     currentbills.forEach( (bill) => {
         if (bill['sponsor_state'] == state) {
-            row = `<tr><th scope="row">1</th><td>${bill['meta_data']['bill_id']}</td><td>${bill['bill_type']}</td><td>${bill['meta_data']['title']}</td><td>${bill['meta_data']['summary']}</td><td>${bill['prediction']}</td><td>${bill['probability']}</td></tr>`;
+            row = `<tr><td>${bill['meta_data']['bill_id']}</td><td>${bill['bill_type']}</td><td>${bill['meta_data']['title']}</td><td>${bill['meta_data']['summary']}</td><td>${bill['prediction']}</td><td>${bill['probability']}</td></tr>`;
             rows = rows + row;
         }
     });
-    table = '<table class="table-responsive table-hover table-striped">' + tableHeader + tableBody + rows + '</tbody></table>';
+    table = '<table id="dtBasicExample" class="table-responsive table-hover table-striped table table-bordered table-sm">' + tableHeader + tableBody + rows + '</tbody></table>';
+
     return table;
 };
 
@@ -110,8 +111,11 @@ function loadpage() {
 
             marker = L.marker(plot_object["coordinates"], options).addTo(myMap).on('click', () => {
                 d3.select("#table-container").html(generateTable(state, currentbills));
+                // $('#dtBasicExample').DataTable({
+                //     "ordering": true // false to disable sorting (or any other option)
+                //    });
+                // $('.dataTables_length').addClass('bs-select');
             });
-
         });
     });
 };
