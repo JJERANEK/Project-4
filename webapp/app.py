@@ -54,4 +54,4 @@ def currentbilldata():
 
 if __name__ == "__main__":
     # change True to False when ready for deployment
-    app.run(debug=False)
+    app.run(debug=True)
