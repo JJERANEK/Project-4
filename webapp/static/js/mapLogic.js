@@ -97,24 +97,8 @@ function loadpage() {
                 "riseOnHover":"true"
             };
 
-            // marker = L.marker(plot_object["coordinates"], options).addTo(myMap).on('click', () => {
-            //     d3.select("#table-container").append(generateTable(state, currentbills));
-            // }).on('mouseover', () => {
-            //     showStateData();
-            // }).on('mouseover', () => {
-            //     hideStateData();
-            // });
-
-            // marker = L.marker(plot_object["coordinates"], options).addTo(myMap).on('click', () => {
-            //     d3.select("#table-container").append("table", generateTable(state, currentbills));
-            // });
-
             marker = L.marker(plot_object["coordinates"], options).addTo(myMap).on('click', () => {
                 d3.select("#table-container").html(generateTable(state, currentbills));
-                // $('#dtBasicExample').DataTable({
-                //     "ordering": true // false to disable sorting (or any other option)
-                //    });
-                // $('.dataTables_length').addClass('bs-select');
             });
         });
     });
