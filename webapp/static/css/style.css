@@ -176,6 +176,19 @@ h2 {
     font-size: 20px;
 }
 
+#HouseModel {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+}
+
+ul {
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 100px;
+}
+
+
 @media (max-width:1000px) {
     .card, .w-50 {
         visibility: hidden;
