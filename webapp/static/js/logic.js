@@ -12,10 +12,12 @@ function buildCharts(billID) {
         let dem_cosponsors = filteredData["cosponsors_dem"];
         let rep_cosponsors = filteredData["cosponsors_rep"];
         let ind_cosponsors = filteredData["cosponsors_ind"];
+        let probability = filteredData["probability"].replace(/%/g, '');
+        let roundedProbability = Math.round(probability);
 
         function countTo() {
             let from = 0;
-            let to = total_cosponsors;
+            let to = roundedProbability;
             let step = to > from ? 1 : -1;
             let interval = 10;
 

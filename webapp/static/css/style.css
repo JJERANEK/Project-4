@@ -2,7 +2,6 @@ body {
     width: 100%;
     height: 100%;
     background-image: url("data:image/jpeg;base64,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");
-    /* background-repeat: no-repeat; */
     background-position: center;
     background-size: cover;
     padding-bottom: 10px;
@@ -52,8 +51,8 @@ h3 {
     font-size: 20px;
     font-family: 'Courier New', Courier, monospace;
     padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
     padding-bottom: 40px;
 }
 
@@ -79,7 +78,7 @@ h3 {
 
 .sponsorData {
     text-align: center;
-    padding-top: 300px;
+    padding-top: 150px;
 }
 
 .sponsorData, p {
@@ -127,6 +126,7 @@ h3 {
     place-items: center;
     font-family: 'Courier New', Courier, monospace;
     font-size: 32px;
+    text-align: center;
 }
 
 #donut {
@@ -146,6 +146,12 @@ h2 {
     padding-top: 20px;
 }
 
+.introParagraph {
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: 20px;
+}
+
 .graphs {
     height: 100%;
     width: 100%;
@@ -161,6 +167,41 @@ h2 {
 .col-md-4 {
     margin-left: -45px;
     margin-bottom: 0px;
+}
+
+.HouseSenateDescription {
+    padding-bottom: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: 20px;
+}
+
+@media (max-width:1000px) {
+    .card, .w-50 {
+        visibility: hidden;
+        display: none;
+    }
+
+    #output {
+        height: 200px;
+        width: 300px;
+        background: linear-gradient(45deg, blue, red);
+        color: white;
+        transform: translate(70%, 10%);
+        border-radius: 8px;
+        box-shadow: 0 20px 25px rgba(0,0,0,0.25);
+        display: grid;
+        place-items: center;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 32px;
+        text-align: center;
+    }
+    
+    #donut {
+        padding-top: 40px;
+        padding-left: 130px;
+        font-weight: bold;
+    }
 }
 
 #map.swiping::after {
