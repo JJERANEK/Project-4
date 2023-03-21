@@ -132,3 +132,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+# Large file, keep out of git:
+Resources/all_bills.csv
