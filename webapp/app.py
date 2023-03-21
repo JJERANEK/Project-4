@@ -29,6 +29,10 @@ def index():
 def usmap():
     return render_template("usmap.html")
 
+@app.route('/about.html')
+def about():
+    return render_template("about.html")
+
 @app.route('/api/v1/topbilldata')
 def topbilldata():
     topbills = topbills_coll.find()
