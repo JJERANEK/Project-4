@@ -132,4 +132,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+# large file
 Resources/all_bills.csv
