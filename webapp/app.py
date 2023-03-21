@@ -20,6 +20,10 @@ with pymongo.MongoClient(uri) as client:
     topbills_coll = db.topbills
     currentbills_coll = db.currentbills
 
+@app.route('/')
+def home():
+    return render_template("index.html")
+
 # Set route
 @app.route('/index.html')
 def index():
