@@ -1,5 +1,5 @@
 const base_url = window.location.href;
-let updated_base_url = truncateString(base_url,base_url.length - 'usmap'.length);
+let updated_base_url = truncateString(base_url,base_url.length - 'usmap.html'.length);
 const billdataurl = `${updated_base_url}api/v1/currentbilldata`;
 let coordinates = [39.50, -98.35];
 let plot_object = {
@@ -42,13 +42,13 @@ L.control.textbox({ position: 'bottomleft' }).addTo(myMap);
 
 window.addEventListener("keyup", (e) => {
     if (!e.ctrlKey) {
-        log(e);
+        // log(e);
         myMap.scrollWheelZoom.disable();
     }
 });
 window.addEventListener("keydown", (e) => {
     if (e.ctrlKey) {
-        log(e);
+        // log(e);
         myMap.scrollWheelZoom.enable();
     }
 });
