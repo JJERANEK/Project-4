@@ -1,11 +1,6 @@
-from dash import Dash, dash_table, dcc, html
+from dash import Dash, dash_table, html
 from dash.dependencies import Input, Output
 import pandas as pd
-from flask import Flask, render_template, jsonify
-from flask_cors import CORS, cross_origin
-# from werkzeug.middleware import dispatcher
-# from werkzeug.serving import run_simple
-# import dash_html_components as html
 import pymongo
 import os
 
@@ -23,19 +18,14 @@ with pymongo.MongoClient(uri) as client:
     topbills_coll = db.topbills
     currentbills_coll = db.currentbills
 
-# Create an instance of our Flask app.
-server = Flask(__name__)
-# cors = CORS(app_flask)
 
 # Create an instance of our dash app.
-app_dash = Dash(__name__, server=server)
+app = Dash(
+    __name__,
+    requests_pathname_prefix='/currentbillsdashboard/'
+)
 
-print('starting topbills load')
-topbills = list(topbills_coll.find())
-print('completed topbills load')
-print('starting currentbills load')
 currentbills = list(currentbills_coll.find())
-print('completed currentbills load')
 
 
 params = [
@@ -43,15 +33,11 @@ params = [
     'cosponsors_dem', 'cosponsors_rep', 'prediction', 'probability'
 ]
 
-topbilldata = [{'ID':topbills.index(bill), 'bill_type':bill['bill_type'], 'sponsor_party':bill['sponsor_party'], 'sponsor_state':bill['sponsor_state'], 'cosponsors_total':bill['cosponsors_total'],
-            'cosponsors_dem':bill['cosponsors_dem'], 'cosponsors_rep':bill['cosponsors_rep'], 'prediction':bill['prediction'], 
-            'probability':bill['probability']} for bill in topbills]
-
 currentbilldata = [{'ID':currentbills.index(bill), 'bill_type':bill['bill_type'], 'sponsor_party':bill['sponsor_party'], 'sponsor_state':bill['sponsor_state'], 'cosponsors_total':bill['cosponsors_total'],
             'cosponsors_dem':bill['cosponsors_dem'], 'cosponsors_rep':bill['cosponsors_rep'], 'prediction':bill['prediction'], 
-            'probability':bill['probability']} for bill in currentbills]
+            'probability':round((float(bill['probability'].replace('%',''))/100),3)} for bill in currentbills]
 
-app_dash.layout = html.Div([
+app.layout = html.Div([
     dash_table.DataTable(
         id='table-editing-simple',
         columns=(
@@ -72,7 +58,7 @@ app_dash.layout = html.Div([
     )
 ])
 
-@app_dash.callback(
+@app.callback(
     Output('table-editing-simple-output', 'figure'),
     Input('table-editing-simple', 'data'),
     Input('table-editing-simple', 'columns'))
@@ -87,42 +73,3 @@ def display_output(rows, columns):
             } for col in columns]
         }]
     }
-
-# Set route
-@server.route('/')
-@server.route('/index.html')
-def index():
-    return render_template("index.html")
-
-@server.route('/usmap.html')
-def usmap():
-    return render_template("usmap.html")
-
-@server.route('/about.html')
-def about():
-    return render_template("about.html")
-
-@server.route('/api/v1/topbilldata')
-def topbilldata():
-    topbills = topbills_coll.find()
-    return_list = []
-    for result in topbills:
-        del result['_id']
-        return_list.append(result)
-    return return_list
-
-@server.route('/api/v1/currentbilldata')
-def currentbilldata():
-    currentbills = currentbills_coll.find()
-    return_list = []
-    for result in currentbills:
-        del result['_id']
-        return_list.append(result)
-    return return_list
-
-@server.route('/dashboard')
-def render_dashboard():
-    return app_dash
-
-if __name__ == '__main__':
-    app_dash.run_server(debug=True)
