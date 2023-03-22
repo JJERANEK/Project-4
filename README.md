@@ -24,9 +24,14 @@ The purpose of this project is to create predictions of whether bills introduced
     <li>Pandas</li>
     <li>BeautifulSoup</li>
     <li>Flask</li>
+    <li>Dash App Hosted on the Same Flask Server</li>
     <li>TensorFlow and Keras</li>
     </ul>
 <li>MongoDB</li>
+    <ul>
+    <li>Atlas M0 Sandbox (Free)</li>
+    <li>AWS N. Virginia Hosting</li>
+    </ul>
 <li>Tableau</li>
 <li>HTML/CSS</li>
     <ul>
