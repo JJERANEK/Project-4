@@ -27,7 +27,7 @@ app = Dash(
 )
 
 params = [
-    'bill_type', 'sponsor_party', 'sponsor_state', 'cosponsors_total',
+    'Bill ID', 'Title', 'sponsor_party', 'sponsor_state', 'cosponsors_total',
     'cosponsors_dem', 'cosponsors_rep', 'prediction', 'probability %'
 ]
 
@@ -38,10 +38,7 @@ currentbilldata = [{'Bill ID':bill['meta_data']['bill_id'], 'Title':bill['meta_d
 app.layout = html.Div([
     dash_table.DataTable(
         id='table-editing-simple',
-        columns=(
-            [{'id': 'ID', 'name': 'ID'}] +
-            [{'id': p, 'name': p} for p in params]
-        ),
+        columns=([{'id': p, 'name': p} for p in params]),
         data = currentbilldata,
         editable=True,
         filter_action="native",
