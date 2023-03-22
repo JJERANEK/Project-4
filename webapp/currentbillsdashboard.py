@@ -5,6 +5,16 @@ import pymongo
 import os
 
 
+def left(s, amount):
+    return s[:amount]
+
+def right(s, amount):
+    return s[-amount:]
+
+def mid(s, offset, amount):
+    return s[offset:offset+amount]
+
+
 ### when running on your personal machine, not render, use:
 # export 'mongo_username'='project4app'
 # export 'mongo_password'='dfh16515d681ds'
@@ -31,9 +41,11 @@ params = [
     'cosponsors_dem', 'cosponsors_rep', 'prediction', 'probability %'
 ]
 
-currentbilldata = [{'Bill ID':bill['meta_data']['bill_id'], 'Title':bill['meta_data']['title'], 'sponsor_party':bill['sponsor_party'], 'sponsor_state':bill['sponsor_state'], 'cosponsors_total':bill['cosponsors_total'],
-            'cosponsors_dem':bill['cosponsors_dem'], 'cosponsors_rep':bill['cosponsors_rep'], 'prediction':bill['prediction'], 
-            'probability %':round((float(bill['probability'].replace('%',''))),2)} for bill in currentbills]
+currentbilldata = [{'Bill ID':bill['meta_data']['bill_id'], 'Title':left(bill['meta_data']['title'], 30), 
+                    'sponsor_party':bill['sponsor_party'], 'sponsor_state':bill['sponsor_state'], 
+                    'cosponsors_total':bill['cosponsors_total'],'cosponsors_dem':bill['cosponsors_dem'], 
+                    'cosponsors_rep':bill['cosponsors_rep'], 'prediction':bill['prediction'], 
+                    'probability %':round((float(bill['probability'].replace('%',''))),2)} for bill in currentbills]
 
 app.layout = html.Div([
     dash_table.DataTable(

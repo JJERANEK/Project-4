@@ -20,6 +20,15 @@ with pymongo.MongoClient(uri) as client:
     topbills = list(topbills_coll.find())
 
 
+def left(s, amount):
+    return s[:amount]
+
+def right(s, amount):
+    return s[-amount:]
+
+def mid(s, offset, amount):
+    return s[offset:offset+amount]
+
 # Create an instance of our dash app.
 app = Dash(
     __name__,
@@ -31,9 +40,11 @@ params = [
     'cosponsors_dem', 'cosponsors_rep', 'prediction', 'probability %'
 ]
 
-topbilldata = [{'Bill ID':bill['meta_data']['bill_id'], 'Title':bill['meta_data']['title'], 'sponsor_party':bill['sponsor_party'], 'sponsor_state':bill['sponsor_state'], 'cosponsors_total':bill['cosponsors_total'],
-            'cosponsors_dem':bill['cosponsors_dem'], 'cosponsors_rep':bill['cosponsors_rep'], 'prediction':bill['prediction'], 
-            'probability %':round((float(bill['probability'].replace('%',''))),2)} for bill in topbills]
+topbilldata = [{'Bill ID':bill['meta_data']['bill_id'], 'Title':left(bill['meta_data']['title'], 30), 
+                'sponsor_party':bill['sponsor_party'], 'sponsor_state':bill['sponsor_state'], 
+                'cosponsors_total':bill['cosponsors_total'], 'cosponsors_dem':bill['cosponsors_dem'], 
+                'cosponsors_rep':bill['cosponsors_rep'], 'prediction':bill['prediction'], 
+                'probability %':round((float(bill['probability'].replace('%',''))),2)} for bill in topbills]
 
 app.layout = html.Div([
     dash_table.DataTable(
