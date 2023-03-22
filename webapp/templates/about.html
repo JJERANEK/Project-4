@@ -50,14 +50,13 @@
                 </p>
             </div>
           </div>
+
           <hr>
+
           <div class="row" id="ModelDescription">
             <div class="col-md-12">
-              <h4 style="text-align:center;">Model Diagram</h4>
-              <img class ="nn_model_pic" id="HouseModel" src="../static/img/house_model_nn.png" alt="House NN">
+              <h2 style="text-align:center;">Model Descriptions</h2>
             </div>
-          </div>
-          <div class="row">
             <div class="col-md-1">
             </div>
             <div class="col-md-10">
@@ -75,18 +74,27 @@
                   <li>Neurons for each hidden layer: 9/7/7/5/1</li>
                   <li>Epochs: 100</li>
                 </ul>
-              <p style="font-size: 24px;">  The House model attained an accuracy score of <span style="color:blue">97.04%</span>  
-                and the Senate model attained an accuracy score of <span style="color:red">95.76%</span>.
-              </p>
-            </div>
-            <div class="col-md-1">
-            </div>
-          </div>
-          <!-- <div class="row">
+          </div> <!-- end of row -->
+          <div class="row" id="ModelDiagram">
             <div class="col-md-12">
-
+              <h4 style="text-align:center;">Model Diagram</h4>
+              <img class ="nn_model_pic" id="HouseModel" src="../static/img/house_model_nn.png" alt="House NN">
             </div>
-          </div> -->
+          </div> <!-- end of row -->
+
+          <hr>
+
+          <div class="row">
+            <div class="col-md-12">
+                <h2 style="text-align:center;">Model Accuracy</h2>
+            </div>
+            <div class="col-md-6">
+              <p style="font-size: 24px;">The House model attained an accuracy score of <span style="color:blue">97.04%</span>.</p>  
+            </div>
+            <div class="col-md-6">
+              <p style="font-size: 24px;">The Senate model attained an accuracy score of <span style="color:red">95.76%</span>.</p>
+            </div>
+          </div> <!-- end of row -->
 
           <div class="row" id="imageDescriptionOne">
             <div class="col-md-3">
@@ -101,12 +109,13 @@
               <div class="col-md-3">
                 <img class ="graphs" src="../static/img/senate_model_loss.png" alt="Senate Loss">
               </div>
-
           </div>
+
           <hr>
+
           <div class="row" id="Title_imageDescriptionTwo">
             <div class="col-md-12">
-              <h4 style="text-align:center;">Descriptive Statistics For House and Senate Data</h4>
+              <h2 style="text-align:center;">Descriptive Statistics For House and Senate Data</h2>
             </div>
           </div>
           <div class="row" id="imageDescriptionTwo">
@@ -120,11 +129,11 @@
           </div>
 
           <div class="row">
-            <p class="HouseSenateDescription">The two graphs above show the total number of bills that passed and failed for each iteration of Congress from the 113th to the 117th for each chamber.
-              The amount of bills passed for the House of Representatives has remained fairly consistent throughout, whereas the amount of failed bills has increased. This would show that more bills 
-              were introduced in the 117th Congress, but passing rate remains similar to previous iterations of Congress.
-              Bills passed in the House of Represenatives are sent to the Senate to be reviewed, amended, and voted on. As shown above, the number of bills shown for 
-              the 116th and 117th iteration of the Senate has increased similarly to the House. Trends shown are incredibly similar to changes in the House.
+            <p class="HouseSenateDescription">The two graphs above show the total number of bills that passed and failed for each Congress from the 113th to the 117th for each chamber.
+              The amount of bills passed for the House of Representatives has remained fairly consistent throughout, whereas the amount of failed bills has increased. More bills 
+              were introduced in the 117th Congress, but the passing rate remains similar to previous terms of Congress.
+              Bills passed in the House of Represenatives are sent to the Senate to be reviewed, amended, and voted on and vice versa. As shown above, the number of bills shown for 
+              the 116th and 117th terms of the Senate has increased similarly to the House. Trends shown are incredibly similar to changes in the House.
             </p>
           </div>
 
@@ -133,8 +142,8 @@
               <div class="card h-100">
                 <img src="../static/img/HouseCosponsors.png" alt="House Cosponsors">
                 <div class="card-body">
-                  <p class="card-text">The 116th and 117th Congress's House of Representatives showed a higher amount of cosponsors attached to bills that have passed compared to 
-                    the previous three iterations. There is also a higher overall average amount of Democrat cosponsors in the more recent iterations of the House.
+                  <p class="card-text">The 116th and 117th House of Representatives showed a higher amount of cosponsors attached to bills that have passed compared to 
+                    the previous three terms. There is also a higher overall average amount of Democrat cosponsors in the more recent terms of the House.
                   </p>
                 </div>
               </div>
