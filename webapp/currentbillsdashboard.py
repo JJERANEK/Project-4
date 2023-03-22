@@ -4,12 +4,13 @@ import pandas as pd
 import pymongo
 import os
 
-mongo_username = os.getenv('mongo_username')
-mongo_password = os.getenv('mongo_password')
+
 ### when running on your personal machine, not render, use:
 # export 'mongo_username'='project4app'
 # export 'mongo_password'='dfh16515d681ds'
 ### these are read only credentials
+mongo_username = os.getenv('mongo_username')
+mongo_password = os.getenv('mongo_password')
 
 uri = f"mongodb+srv://{mongo_username}:{mongo_password}@cluster0.khzagou.mongodb.net/?retryWrites=true&w=majority"
 
@@ -19,7 +20,6 @@ with pymongo.MongoClient(uri) as client:
     currentbills_coll = db.currentbills
     currentbills = list(currentbills_coll.find())
 
-
 # Create an instance of our dash app.
 app = Dash(
     __name__,
@@ -28,12 +28,12 @@ app = Dash(
 
 params = [
     'bill_type', 'sponsor_party', 'sponsor_state', 'cosponsors_total',
-    'cosponsors_dem', 'cosponsors_rep', 'prediction', 'probability'
+    'cosponsors_dem', 'cosponsors_rep', 'prediction', 'probability %'
 ]
 
 currentbilldata = [{'ID':currentbills.index(bill), 'bill_type':bill['bill_type'], 'sponsor_party':bill['sponsor_party'], 'sponsor_state':bill['sponsor_state'], 'cosponsors_total':bill['cosponsors_total'],
             'cosponsors_dem':bill['cosponsors_dem'], 'cosponsors_rep':bill['cosponsors_rep'], 'prediction':bill['prediction'], 
-            'probability':round((float(bill['probability'].replace('%',''))/100),3)} for bill in currentbills]
+            'probability':round((float(bill['probability'].replace('%',''))),2)} for bill in currentbills]
 
 app.layout = html.Div([
     dash_table.DataTable(
