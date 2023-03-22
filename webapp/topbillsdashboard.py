@@ -33,7 +33,7 @@ params = [
 
 topbilldata = [{'ID':topbills.index(bill), 'bill_type':bill['bill_type'], 'sponsor_party':bill['sponsor_party'], 'sponsor_state':bill['sponsor_state'], 'cosponsors_total':bill['cosponsors_total'],
             'cosponsors_dem':bill['cosponsors_dem'], 'cosponsors_rep':bill['cosponsors_rep'], 'prediction':bill['prediction'], 
-            'probability':round((float(bill['probability'].replace('%',''))),2)} for bill in topbills]
+            'probability %':round((float(bill['probability'].replace('%',''))),2)} for bill in topbills]
 
 app.layout = html.Div([
     dash_table.DataTable(
@@ -42,10 +42,6 @@ app.layout = html.Div([
             [{'id': 'ID', 'name': 'ID'}] +
             [{'id': p, 'name': p} for p in params]
         ),
-        # data=[
-        #     dict(Model=i, **{param: 0 for param in params})
-        #     for i in range(1, 5)
-        # ],
         data = topbilldata,
         editable=True,
         filter_action="native",

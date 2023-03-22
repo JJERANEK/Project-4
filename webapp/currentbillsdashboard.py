@@ -33,7 +33,7 @@ params = [
 
 currentbilldata = [{'ID':currentbills.index(bill), 'bill_type':bill['bill_type'], 'sponsor_party':bill['sponsor_party'], 'sponsor_state':bill['sponsor_state'], 'cosponsors_total':bill['cosponsors_total'],
             'cosponsors_dem':bill['cosponsors_dem'], 'cosponsors_rep':bill['cosponsors_rep'], 'prediction':bill['prediction'], 
-            'probability':round((float(bill['probability'].replace('%',''))),2)} for bill in currentbills]
+            'probability %':round((float(bill['probability'].replace('%',''))),2)} for bill in currentbills]
 
 app.layout = html.Div([
     dash_table.DataTable(
