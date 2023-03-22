@@ -68,8 +68,8 @@ h3 {
     width: 350px;
 }
 
-.card, .w-50 {
-    margin-left: 150px;
+.w-50 {
+    margin-left: 100px;
     margin-bottom: 20px;
     background: transparent;
     font-family: 'Courier New', Courier, monospace;
@@ -190,7 +190,7 @@ ul {
 
 
 @media (max-width:1000px) {
-    .card, .w-50 {
+    .w-50 {
         visibility: hidden;
         display: none;
     }
@@ -215,7 +215,45 @@ ul {
         padding-left: 130px;
         font-weight: bold;
     }
+
+    #billInfo {
+        /* overflow: auto; */
+        text-align: center;
+        background-image: url("http://www.templeofsacredsound.com/wp-content/uploads/2012/11/Background-Scroll-png.png");
+        background-position: center;
+        background-size: 1060px 800px;
+        background-repeat: no-repeat;
+        /* padding-left: 45px;
+        padding-right: 65px;
+        padding-top: 125px;
+        padding-bottom: 8px; */
+    }
 }
+
+@media (max-width:1535px) {
+    #selDataset {
+        width: 100px;
+    }
+
+    #billInfo {
+        overflow: auto;
+        text-align: center;
+        background-image: url("http://www.templeofsacredsound.com/wp-content/uploads/2012/11/Background-Scroll-png.png");
+        background-position: center;
+        background-size: 1060px 800px;
+        background-repeat: no-repeat;
+        padding-left: 45px;
+        padding-right: 65px;
+        padding-top: 250px;
+        padding-bottom: 8px;
+    }
+}
+
+/* @media (min-width:768px) and (max-width:15000px) {
+    .col-md-4 {
+
+    }
+} */
 
 #map.swiping::after {
     content: 'Use two fingers to move the map';
