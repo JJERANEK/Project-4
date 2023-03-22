@@ -82,3 +82,10 @@ It was also discovered that bills introduced in the first half of the year had a
 <br>
 <br>
 
+## Project Team
+<hr>
+
+- [Zach Crowley](https://github.com/zwcrowley)
+- [Sam Holland](https://github.com/holla394)
+- [Jordan Jeranek](https://github.com/JJERANEK)
+- [Lindsey Wolterstorff](https://github.com/LindseyWol)
