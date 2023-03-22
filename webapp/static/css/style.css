@@ -157,6 +157,11 @@ h2 {
     width: 100%;
 }
 
+.nn_model_pic {
+    width: 100%; 
+    height: auto;
+}
+
 #imageDescriptionOne, #imageDescriptionTwo {
     padding-top: 30px;
     padding-left: 30px;

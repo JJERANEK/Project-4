@@ -41,29 +41,45 @@
           <div class="row">
             <div class="col-md-12">
               <div class="pageHeader">
-                <h2>About the Model</h2>
+                <h2>About the Models</h2>
               </div>
-                <p class="introParagraph">This model was created to take in information from bills in the United States House of Representatives and Senate that made it to a vote and make predictions on whether currently introduced bills
-                  will pass or fail an upcoming vote based on the same criteria. When using the model, the assumption must be made that the bill will remain as is, meaning that the model is
-                  basing its predictions off the bills' current information, and it will not account for changes variables, such as an increased or decreased number of cosponsors.
+                <p class="introParagraph">House and Senate models were created by training on all the bills introduced in the United States House of Representatives 
+                  and Senate from the 113th Congress to the 117th Congress. These models were used to make predictions on whether 
+                  currently introduced bills in the 118th Congress will pass or fail an upcoming vote based on the same criteria.
+                  Model predictions are based on all the assumptions put into the model training.
                 </p>
             </div>
           </div>
           <hr>
           <div class="row" id="ModelDescription">
-            <div class="col-md-7">
-              <h4 style="text-align:center;">Model Plot</h4>
-              <img class ="graphs" id="HouseModel" src="../static/img/house_model_nn.png" alt="House NN">
+            <div class="col-md-12">
+              <h4 style="text-align:center;">Model Diagram</h4>
+              <img class ="nn_model_pic" id="HouseModel" src="../static/img/house_model_nn.png" alt="House NN">
             </div>
-            <div class="col-md-5">
-              <p style="font-size: 20px;">This model uses scikit-learn and TensorFlow/Keras packages for Python. After preprocessing and splitting data into train and test data, 
-                the model was trained and tested. This model shows an accuracy score of <span style="color:blue">96.72%</span> for the House and <span style="color:red">96.35%</span> for the Senate.
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-10">
+              <p style="font-size: 20px;">The models were built using neural network machine learning algorithms using scikit-learn and TensorFlow/Keras packages for Python.
+                After data cleaning, the total training/testing dataset for all bills was 60,568.
+                For training the respective models, the data was split into House data containing 39,055 bills and Senate data containing 21,126 bills.</p>
+              <p style="font-size: 20px;">After further preprocessing, the datasets were individually split into training and testing data, 
+                which were fit using the model description below, creating the House and Senate models.</p>
+                <ul>
+                  <li>Target: Bill Passed into Law</li>
+                  <li>Features: Congress Term, Sponsor Party, Count of Cosponsors, Count of Cosponsors by party,
+                    Total # of Cosponsor States, Count of Cosponsors by state, Month Introduced, Subject (Total features: House model 122, Senate model 115)</li>
+                  <li>Total Layers: 5</li>
+                  <li>Activation Functions: relu, relu, tanh, tanh, sigmoid</li>
+                  <li>Neurons for each hidden layer: 9/7/7/5/1</li>
+                  <li>Epochs: 100</li>
+                </ul>
+              <p style="font-size: 24px;">  The House model attained an accuracy score of <span style="color:blue">97.04%</span>  
+                and the Senate model attained an accuracy score of <span style="color:red">95.76%</span>.
               </p>
-              <ul>
-                <li>Total Layers: 5</li>
-                <li>Neurons for each hidden layer: 9/7/7/5/1</li>
-                <li>Epochs: 100</li>
-              </ul>
+            </div>
+            <div class="col-md-1">
             </div>
           </div>
           <!-- <div class="row">
@@ -88,13 +104,18 @@
 
           </div>
           <hr>
+          <div class="row" id="Title_imageDescriptionTwo">
+            <div class="col-md-12">
+              <h4 style="text-align:center;">Descriptive Statistics For House and Senate Data</h4>
+            </div>
+          </div>
           <div class="row" id="imageDescriptionTwo">
             <div class="col-md-6">
               <img src="../static/img/HouseBills.png" alt="House Bills" style="width: 100%;">
               <!-- <div id="plot"></div> -->
             </div>
             <div class="col-md-6">
-              <img src="../static/img/SenateBills.png" alt="Senate Bills" style="width: 100%">
+              <img src="../static/img/SenateBills.png" alt="Senate Bills" style="width: 100%; height: 100%;">
             </div>
           </div>
 
