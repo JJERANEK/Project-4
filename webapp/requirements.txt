@@ -1,6 +1,7 @@
 bs4
 certifi
 Click
+dash
 Flask
 flask_cors
 Flask-SQLAlchemy

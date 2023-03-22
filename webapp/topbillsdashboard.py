@@ -16,7 +16,7 @@ uri = f"mongodb+srv://{mongo_username}:{mongo_password}@cluster0.khzagou.mongodb
 with pymongo.MongoClient(uri) as client:
     db = client.usbillsapp
     topbills_coll = db.topbills
-    currentbills_coll = db.currentbills
+    topbills = list(topbills_coll.find())
 
 
 # Create an instance of our dash app.
@@ -24,8 +24,6 @@ app = Dash(
     __name__,
     requests_pathname_prefix='/topbillsdashboard/'
 )
-
-topbills = list(topbills_coll.find())
 
 params = [
     'bill_type', 'sponsor_party', 'sponsor_state', 'cosponsors_total',

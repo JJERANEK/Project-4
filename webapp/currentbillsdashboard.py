@@ -17,6 +17,7 @@ with pymongo.MongoClient(uri) as client:
     db = client.usbillsapp
     topbills_coll = db.topbills
     currentbills_coll = db.currentbills
+    currentbills = list(currentbills_coll.find())
 
 
 # Create an instance of our dash app.
@@ -24,9 +25,6 @@ app = Dash(
     __name__,
     requests_pathname_prefix='/currentbillsdashboard/'
 )
-
-currentbills = list(currentbills_coll.find())
-
 
 params = [
     'bill_type', 'sponsor_party', 'sponsor_state', 'cosponsors_total',
@@ -44,10 +42,6 @@ app.layout = html.Div([
             [{'id': 'ID', 'name': 'ID'}] +
             [{'id': p, 'name': p} for p in params]
         ),
-        # data=[
-        #     dict(Model=i, **{param: 0 for param in params})
-        #     for i in range(1, 5)
-        # ],
         data = currentbilldata,
         editable=True,
         filter_action="native",
