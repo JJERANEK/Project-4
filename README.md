@@ -5,7 +5,7 @@ Check out our website --> [US Bills App](https://usbillsapp.onrender.com/)
 
 ## Purpose
 <hr>
-The purpose of this project is to create predictions of whether bills introduced in the US House of Representatives or US Senate would pass or fail based on machine learning of previous iterations of Congress. Bill information would be taken from CSVs and web scraping, cleaned and formatted to fit a neural network model, and uploaded to a MongoDB database for storage. From there, the model would be trained, tested, and optimized for accuracy. Findings of trends and model results would be charted and displayed. Then a webpage application would be created to allow users to choose from a list of the Top 25 Most Popular Bills (according to GovTrack.us) to see the bill information and our prediction of the likelihood of the bill passing as it was written upon time of data collection. This website would also include additional pages to view information about the model and findings, as well as sortable data tables to view all bill information and a map to dispaly information relevenat to each state.
+The purpose of this project is to create predictions of whether bills introduced in the US House of Representatives or US Senate would pass or fail based on machine learning of previous terms of Congress. Bill information would be taken from CSVs and web scraping, cleaned and formatted to fit a neural network model, and uploaded to a MongoDB database for storage. From there, the model would be trained, tested, and optimized for accuracy. Findings of trends and model results would be charted and displayed. Then a webpage application would be created to allow users to choose from a list of the Top 25 Most Popular Bills (according to GovTrack.us) to see the bill information and our prediction of the likelihood of the bill passing as it was written upon time of data collection. This website would also include additional pages to view information about the model and findings, as well as sortable data tables to view all bill information and a map to dispaly information relevenat to each state.
 <br>
 <br>
 
@@ -85,7 +85,7 @@ It was also discovered that bills introduced in the first half of the year had a
 ## Project Team
 <hr>
 
-- [Zach Crowley](https://github.com/zwcrowley)
+- [Zack Crowley](https://github.com/zwcrowley)
 - [Sam Holland](https://github.com/holla394)
 - [Jordan Jeranek](https://github.com/JJERANEK)
 - [Lindsey Wolterstorff](https://github.com/LindseyWol)
